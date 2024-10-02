@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import WordCounterView from "./components/WordCounterView";
+import { countWords } from "./utils/wordCounter";
+import { countChars } from "./utils/charCounter";
 
-function App() {
+const App = () => {
+  const [text, setText] = useState("");
+  const [wordCount, setWordCount] = useState(0);
+  const [charCount, setCharCount] = useState(0);
+
+  const handleTextChange = (newText) => {
+    setText(newText);
+    setWordCount(countWords(newText));
+    setCharCount(countChars(newText));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <WordCounterView
+        text={text}
+        wordCount={wordCount}
+        charCount={charCount}
+        onTextChange={handleTextChange}
+      />
     </div>
   );
-}
+};
 
 export default App;
