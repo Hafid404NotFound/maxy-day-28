@@ -1,7 +1,7 @@
 import React from "react";
 import "./WordCounterView.css";
 
-const WordCounterView = ({ text, wordCount, charCount, onTextChange }) => {
+const WordCounterView = ({ text, charCount, onTextChange }) => {
   return (
     <div className="container">
       <h1>Word & Char Counter</h1>
@@ -14,7 +14,6 @@ const WordCounterView = ({ text, wordCount, charCount, onTextChange }) => {
       />
 
       <p>Character Count: {charCount}</p>
-      <p>Word Count: {wordCount}</p>
     </div>
   );
 };
